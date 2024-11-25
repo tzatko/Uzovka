@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+# Toto je prostredie vykonávania pre slovenský programovací jazyk Užovka.
+# Počiatošné uskutočnenie v jazyku Pytón
+
+import tokenize
+from io import BytesIO
+import sys
+import csv
+
+def load_substitutions_from_csv(filename):
+    """Načítaj páry nahradenia z CSV súboru."""
+    substitutions = {}
+    with open(filename, mode='r', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            narecie, python_keyword = row
+            substitutions[python_keyword] = narecie  # Swap positions for reverse translation (Python -> Užovka)
+    return substitutions
+
+def ensure_space_around(token_str, substitutions):
+    """Add space around translated token if it's an operator, without removing existing spaces."""
+    if token_str in substitutions:
+        translated = substitutions[token_str]
+        # Ensure spaces before and after the token, without worrying about existing spaces
+        return f' {translated} '
+    return token_str
+
+def substitute_code(code, substitutions):
+    """Vikonaj preklad z Pitónu do Užovki."""
+    result = []
+    tokens = list(tokenize.tokenize(BytesIO(code.encode('utf-8')).readline))
+    
+    # Tokenize and substitute both names and operators/symbols
+    for token in tokens:
+        # Check for names and operators (OP)
+        if token.type in {tokenize.NAME, tokenize.OP} and token.string in substitutions:
+            # Apply the substitution and add spaces generously
+            translated_token = ensure_space_around(token.string, substitutions)
+            result.append((token.type, translated_token))
+        else:
+            result.append((token.type, token.string))
+            
+    return tokenize.untokenize(result).decode('utf-8')
+
+def translate_code_to_uzovka(filename, substitutions):
+    """Prečítaj spis, prelož kód do Užovki a vypíš ho."""
+    with open(filename, 'r', encoding='utf-8') as f:
+        code = f.read()
+    translated_code = substitute_code(code, substitutions)
+    # Vypíš preložený kód
+    print(translated_code)
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("Použiťje: prepísaňje <meno_spisu>")
+        sys.exit(1)
+
+    # Načítaj páry nahradenia z ČOH súboru
+    substitutions = load_substitutions_from_csv('nárečja.čoh')
+
+    # Získaj názov súboru zadaný ako argument
+    script_filename = sys.argv[1]
+    translate_code_to_uzovka(script_filename, substitutions)

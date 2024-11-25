@@ -1,0 +1,73 @@
+#!/usr/bin/env python3
+# Toto je prostredie vykonávania pre slovenské programovacie nárečie Užovka.
+# Počiatočné uskutočnenie je napísané v nárečí Pytón
+
+import tokenize
+from io import BytesIO
+import sys
+import csv
+import os
+
+def load_substitutions_from_csv(filename):
+    """Načítaj pári prekladu z ČOH súboru."""
+    substitutions = {}
+    with open(filename, mode='r', encoding='utf-8') as file:
+        reader = csv.reader(file)
+        for row in reader:
+            narecie, python_keyword = row
+            substitutions[narecie] = python_keyword  # Užovka -> Python
+    return substitutions
+
+def substitute_code(code, substitutions):
+    """Vikonaj preklad z Užovki do Pitónu."""
+    result = []
+    tokens = tokenize.tokenize(BytesIO(code.encode('utf-8')).readline)
+    
+    # Tokenize and substitute both names and operators/symbols
+    for token in tokens:
+        if token.type in {tokenize.NAME, tokenize.OP} and token.string in substitutions:
+            result.append((token.type, substitutions[token.string]))
+        else:
+            result.append((token.type, token.string))
+            
+    return tokenize.untokenize(result).decode('utf-8')
+
+def save_translated_code(filename, translated_code):
+    """Ulož preložení kód do nového spisu."""
+    translated_filename = filename.replace("🐍", "pitón")  # Example of renaming the extension
+    with open(translated_filename, 'w', encoding='utf-8') as f:
+        f.write(translated_code)
+    return translated_filename
+
+def run_translated_code(filename):
+    """Vikonaj preložení kód pomocou Pitónového vikonávača."""
+    os.system(f"python {filename}")
+
+def delete_translated_file(filename):
+    """Odstráň preložení súbor."""
+    if os.path.exists(filename):
+        os.remove(filename)
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        print("Použitje: užovka <meno_spisu>")
+        sys.exit(1)
+
+    # Načítaj pári prekladu z ČOH spisu
+    substitutions = load_substitutions_from_csv('nárečja.čoh')
+
+    # Získaj názov spisu zadaného ako argument
+    script_filename = sys.argv[1]
+
+    # Krok 1: Preloženie spisu a jeho uloženie
+    with open(script_filename, 'r', encoding='utf-8') as f:
+        code = f.read()
+    translated_code = substitute_code(code, substitutions)
+    translated_filename = save_translated_code(script_filename, translated_code)
+
+    # Krok 2: Spustenie preloženého spisu a odstránenie spisu
+    try:
+        run_translated_code(translated_filename)
+    finally:
+        # Ensure the translated file is deleted after execution
+        delete_translated_file(translated_filename)
