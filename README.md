@@ -39,6 +39,9 @@ Jednoduchšja verzija je napísaná v súbore `ahojsvet.🐍`
 
 Všimnime si, že namiesto `def` máme `ustanoviť`, namiesto `print` máme `vipísať`, a takto ďaľej. Váš kód teraz znie ako rozprava v reči slovenkej!
 
+# Ukážka
+![](demo.svg)
+
 # Klúčové slová v Užovke
 Užovka má svoje vlastné verzije známich Pitónovskích kľúčovích slov, napríklad:
 
