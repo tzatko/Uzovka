@@ -1,4 +1,4 @@
-![Obrázok](./obrázok.png)
+![Obrázok](./obrázok.png)
 
 # 🐍 Užovka - slovenské programovacie nárečie! 🐍
 
