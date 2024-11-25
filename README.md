@@ -84,3 +84,7 @@ Toto programovacje nárečje bolo inšpirované i projektami tímito:
 
 * [OSTRAJava](https://github.com/tkohout/OSTRAJava)
 * [BRA Recursive Acronym](https://github.com/tzatko/BRA)
+
+# Záverom
+Virovnaj sa s tím!
+![](Ludovit_Velislav_Stur_virovnaj_sa_s_tim-deal_with_it.jpg)
