@@ -37,6 +37,36 @@ keďbi __meno__ rovnje "__hlavné__":
 Jednoduchšja verzija je napísaná v súbore `ahojsvet.🐍`
 Ďaľším praktickím príkladom je program v súbore `eratosthenes.🐍`. Ten vie spočítať prvích en prvočísel. Také pánske huncútstvo.
 
+```
+# Ustanovenie funkcije sito pre nájďeňje prvočísel do N
+ustanoviť sito (N:celuo):
+# Vitvoríme súpis pravďivuo hodnôt pre každé číslo až do N
+    prvočísla=[pravďivuo] násobňe (N sčítať 1)
+
+    # Začňeme pre 2, lebo 1 ňeje prvočíslo
+    prvočísla[0]=ňič 
+    prvočísla[1]=ňič 
+
+    # Pre každé číslo od 2 do odmocnini N
+    pre i v rozmedzie (2,celuo (N**0.5) sčítať 1):
+    # Keďbi i je prvočíslo, odstráňime jeho násobki
+        keďbi prvočísla [i]:
+        # Pre každí násobok i od i^2 do N
+            pre j v rozmedzie (i násobňe i,N sčítať 1,i):
+                prvočísla [j]=nepravďivuo 
+
+                # Vipíšeme všetki prvočísla
+    vipísať ([i pre i v rozmedzie (N sčítať 1 ) keďbi prvočísla [i]])
+
+# Hlavní program
+keďbi __name__ rovnje "__main__":
+# Požjadaj užívaťeľa o zadaňje hornej hranice N
+    N=celuo (vipítaj ("Zadaj číslo N: "))
+
+    # Zavolaj funkciju sito pre N
+    sito (N)
+```
+
 Všimnime si, že namiesto `def` máme `ustanoviť`, namiesto `print` máme `vipísať`, a takto ďaľej. Váš kód teraz znie ako rozprava v reči slovenkej!
 
 # Ukážka
