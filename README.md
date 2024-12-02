@@ -19,7 +19,7 @@ cd Užovka
 
 Teraz viskúšajťe spustiť vaše programi v Užovke s príkazom:
 ```
-./užovka súbor.🐍s
+./užovka súbor.🐍
 ```
 
 # Príklad kódu v Užovke
@@ -106,7 +106,7 @@ Našim vzňešením cieľom je dosiahnúť abi služobníctva vládi slovenskej 
 Nie sme veru mi žiadňi fiškáli, ale bi sme použiľi GNU VVD - Všeobecné verejné dovoľeňije. Ňevjem ktorej verzije [:smutnik:].
 
 # Slovo kurátora k obrázku
-*Autor simboľicki viužíva farbi trikolóri spolu s vhodním víberom fontu ako referencije na slovenskí ľudoví puovod nárečia už z čias Ľudevíta Štúra. Sám Hurban sa o nárečí vijadril, citujem "Ci Pána, to ťi je janovô!". Hodža smaotné nárečie komentoval ako "Ja už v inôm písať aňi nedokážem.. žena mi to logo aj na košuľku višila, aha..." (ukazuje na obrázok višití krížikovím stehom na svojej konopnej košuľke)*
+*Autor simboľicki viužíva farbi trikolóri spolu s vhodním víberom fontu ako referencije na slovenskí ľudoví puovod nárečia už z čias Ľudevíta Štúra. Sám Hurban sa o nárečí vijadril, citujem "Ci Pána, to ťi je janovô!". Hodža smaotné nárečie komentoval ako "Ja už v inôm písať aňi nedokážem.. žena mi to logo aj na košuľku višila, aha..." (ukazuje na obrázok višití krížikovím stehom na svojej konopnej košuľke)* Kredity patria [domineemu](https://github.com/dominee).
 
 # Inšpirácia a odporúčaňja na iné zaujímavé projekťi
 
@@ -114,6 +114,7 @@ Toto programovacje nárečje bolo inšpirované i projektami tímito:
 
 * [OSTRAJava](https://github.com/tkohout/OSTRAJava)
 * [BRA Recursive Acronym](https://github.com/tzatko/BRA)
+* [Šaral 2.0 - Šariš algorithmic language 2.0 implementation for JVM](https://github.com/PaulNoth/saral)
 
 # Záverom
 Virovnaj sa s tím!
