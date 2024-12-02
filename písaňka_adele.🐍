@@ -1,0 +1,25 @@
+#### VAROVAŇJE!!!!!!
+#### Toto je verzia ä, nebolä vyskúšaňja v produkčňom prostredí
+
+# Importovanie knižnice ollama
+ustanoviť ollama:
+    # Importovanie modulu modelu
+    z ollama naložiť model
+
+# Ustanovenie funkcije, čo poprosí model o napísanie ľúbostného listu
+ustanoviť žiadaj_list(Adela):
+    # Špecifikácia modelu a jeho verzie
+    Štúr = model('Štúr:1815')
+    # Text žiadosti
+    požiadavka = f"Milý Štúr, prosím ťa, napíš ľúbostný list pre osobu zvanú {Adela}."
+
+    # Volanie modelu s požiadavkou
+    odpoveď = Štúr.povedz(požiadavka)
+
+    # Výpis odpovede modelu
+    vipísať(odpoveď)
+
+# Hlavní program
+keďbi __meno__ rovnje "__hlavné__":
+    # Volanie funkcie s menom Adela
+    žiadaj_list('Adela Ostrolúcka')
